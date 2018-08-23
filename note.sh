@@ -6,8 +6,7 @@ usage: $0 [ -t MSG-TITLE ] [ -c MSG-CONTENT ] [ -k SCKEY-TO-SEND-MSG ]
     -k : Specify the SCKEY of the user to send note to. If multiple, set the keys in term of csv, 
          as 'key-1,key-2,key-3'.
     -t : Specify the title of the message to send.  
-    -c : Specify the content of the message.  
-         If not specified, send no content.
+    -c : Specify the content of the message. If not specified, send no content.
 
 USAGE
 exit 0
