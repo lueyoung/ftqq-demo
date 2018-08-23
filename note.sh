@@ -28,6 +28,7 @@ while getopts "hk:t:c:" opt; do # 选项后面的冒号表示该选项需要参�
         ;;
     esac
 done
+[ -z "$*" ] && show_help
 chk_var () {
 if [ -z "$2" ]; then
   echo "$(date -d today +'%Y-%m-%d %H:%M:%S') - [ERROR] - no input for \"$1\", try \"$0 -h\"."
