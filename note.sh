@@ -56,7 +56,7 @@ if [[ -n $FILE ]]; then
 fi
 SCKEYS=$(echo ${SCKEYS} | tr "," " ")
 MSG=""
-MSG="text=${TITLE}"
+MSG="text=${TITLE}-${RANDOM}"
 if [[ -n "${CONTENT}" ]]; then
   MSG="${MSG}&desp=${CONTENT}"
 fi
