@@ -44,7 +44,6 @@ MSG="text=${TITLE}"
 if [[ -n "${CONTENT}" ]]; then
   MSG="${MSG}&desp=${CONTENT}"
 fi
-echo $MSG
 for SCKEY in ${SCKEYS}; do
   URL=https://sc.ftqq.com/${SCKEY}.send
   curl -d "${MSG}" -X POST ${URL}
