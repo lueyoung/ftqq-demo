@@ -9,12 +9,13 @@ usage: $0 [ -t MSG-TITLE ] [ -c MSG-CONTENT ] [ -k SCKEY-TO-SEND-MSG ] [ -f FILE
     -c : Specify the content of the message. If not specified, send no content. Priority: higher.
     -f : Specify the content of the message, in term of file (markdown supported).
          If not specified, send no content. Priority: lowwer. 
+    -r : Define if set random number appended to the title. NOT set by default.  
 
 USAGE
 exit 0
 }
 # Get Opts
-while getopts "hk:t:c:f:" opt; do # 选项后面的冒号表示该选项需要参数
+while getopts "hk:t:c:f:r" opt; do # 选项后面的冒号表示该选项需要参数
     case "$opt" in
     h)  show_help
         ;;
@@ -25,6 +26,8 @@ while getopts "hk:t:c:f:" opt; do # 选项后面的冒号表示该选项需要�
     c)  CONTENT=$OPTARG
         ;;
     f)  FILE=$OPTARG
+        ;;
+    r)  RAND=true
         ;;
     ?)  # 当有不认识的选项的时候arg为?
         echo "unkonw argument"
@@ -50,8 +53,10 @@ if [[ -n $FILE ]]; then
   fi
 fi
 SCKEYS=$(echo ${SCKEYS} | tr "," " ")
-MSG=""
-MSG="text=${TITLE}-${RANDOM}"
+MSG="text=${TITLE}"
+if [[ $RAND ]]; then
+  MSG="text=${TITLE} - ${RANDOM}"
+fi
 if [[ -n "${CONTENT}" ]]; then
   MSG="${MSG}&desp=${CONTENT}"
 elif [[ -n "${FILE}" ]]; then
